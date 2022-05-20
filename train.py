@@ -5,7 +5,8 @@ Created on Sat Apr  2 18:52:13 2022
 
 Train:
 
-This script trains different models using different window sizes and epochs
+This script trains different models using different window sizes and epochs.
+Results are saved in 'Results/'
 
 
 @author: curro
