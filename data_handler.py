@@ -21,8 +21,8 @@ def load_dataset(name):
 
 def get_ACN():
     # Load the dataset
-    file_path = "data_preprocessing/processed_data/data2019.pkl"
-    df = pd.read_pickle(file_path)
+    file_path = "data_preprocessing/processed_data/data2019.json"
+    df = pd.read_json(file_path)
     # New dataframe with training data - 1 column
     times = df.filter(['index'])
     df_for_training = df.filter(['val_total_power']).astype(float)
