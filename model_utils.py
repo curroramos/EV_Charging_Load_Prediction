@@ -92,7 +92,6 @@ def get_Bidirectional_LSTM(window_size, num_features):
       tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(32, return_sequences=True), input_shape = [window_size, num_features]),
       tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(32)),
       tf.keras.layers.Dense(1),
-      tf.keras.layers.Lambda(lambda x: x * 100.0)
     ])  
     return model
 
