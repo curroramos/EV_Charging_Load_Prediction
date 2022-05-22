@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 from keras.preprocessing.sequence import TimeseriesGenerator
 from model_utils import configure_callbacks
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 
 from plot_utils import plot_series, plot_predictions, plot_training, plot_gtruth_and_predictions
@@ -31,11 +31,11 @@ from model_utils import build_model, predict
 
 # Inputs:
 dataset = "ACN_data"
-model_name = 'Simple_ANN' #'CNN_LSTM':Simple_RNN':'LSTM':'LSTM_stacked':Bidirectional_LSTM':'Simple_ANN'
+model_name = 'Bidirectional_LSTM' #'CNN_LSTM':Simple_RNN':'LSTM':'LSTM_stacked':Bidirectional_LSTM':'Simple_ANN'
 
 window_size = 24 * 4 # 4 days
 
-epochs = 2
+epochs = 1
 
 # Load and prepare the dataset
 series,times = load_dataset(dataset)
@@ -127,16 +127,22 @@ test_predict = predict(model,
                        validation_generator,
                        scaler)
 
-# Validate the model using RMSE
+# Validate the model using RMSE and MAE
 trainScore = math.sqrt(mean_squared_error(x_train[window_size:], train_predict[:,0]))
 testScore = math.sqrt(mean_squared_error(x_test[window_size:], test_predict[:,0]))
 print('Train Score: %.2f RMSE' % (trainScore))
 print('Test Score: %.2f RMSE' % (testScore))
 
+train_mae = mean_absolute_error(x_train[window_size:], train_predict[:,0]) 
+test_mae = mean_absolute_error(x_test[window_size:], test_predict[:,0])
+print('Train Score: %.2f MAE' % (train_mae))
+print('Test Score: %.2f MAE' % (test_mae))
+
 # Write validation results on csv
 csv_file = open(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/validation_metrics.txt', 'w')
 csv_writer = csv.writer(csv_file, delimiter = '\n')
 csv_writer.writerow(['Train Score: %.2f RMSE' % (trainScore), 'Test Score: %.2f RMSE' % (testScore)])
+csv_writer.writerow(['Train Score: %.2f MAE' % (train_mae), 'Test Score: %.2f MAE' % (test_mae)])
 csv_file.close()
 
 # Plot train and test predictions
