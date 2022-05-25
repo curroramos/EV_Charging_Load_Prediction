@@ -31,11 +31,11 @@ from model_utils import build_model, predict
 
 # Inputs:
 dataset = "ACN_data"
-model_name = 'Bidirectional_LSTM' #'CNN_LSTM':Simple_RNN':'LSTM':'LSTM_stacked':Bidirectional_LSTM':'Simple_ANN'
+model_name = 'Simple_RNN' #'CNN_LSTM':Simple_RNN':'LSTM':'LSTM_stacked':Bidirectional_LSTM':'Simple_ANN'
 
-window_size = 24 * 4 # 4 days
+window_size = 24 * 7 # 4 days
 
-epochs = 1
+epochs = 2
 
 # Load and prepare the dataset
 series,times = load_dataset(dataset)

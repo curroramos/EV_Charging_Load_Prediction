@@ -34,8 +34,6 @@ def plot_training(history):
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
     plt.legend()
-    plt.show()
-
     
 
 # Plot train and test predictions
