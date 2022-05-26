@@ -1,0 +1,4 @@
+Train Score: 3.93 RMSE
+Test Score: 3.96 RMSE
+Train Score: 2.72 MAE
+Test Score: 2.68 MAE
