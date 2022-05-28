@@ -168,11 +168,11 @@ plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/
 
 
 # Plot train and test with zoom
-plot_gtruth_and_predictions(x_train, train_predict, window_size, start = 0, end = 100)
+plot_gtruth_and_predictions(x_train, train_predict, window_size, start = 0, end = 168)
 plt.title('Predictions on train (zoomed sample)')
 plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/pred_train_zoom.png')
 
-plot_gtruth_and_predictions(x_test, test_predict, window_size, start = 0, end = 100)
+plot_gtruth_and_predictions(x_test, test_predict, window_size, start = 0, end = 168)
 plt.title('Predictions on test (zoomed sample)')
 plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/pred_test_zoom.png')
 
