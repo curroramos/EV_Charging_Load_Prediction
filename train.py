@@ -14,6 +14,7 @@ Results are saved in 'Results/'
 import os
 import csv
 import math
+import argparse
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,16 +30,25 @@ from plot_utils import plot_series, plot_predictions, plot_training, plot_gtruth
 from data_handler import load_dataset
 from model_utils import build_model, predict
 
-# Inputs:
-dataset = "ACN_data"
-model_name = 'Simple_RNN' #'CNN_LSTM':Simple_RNN':'LSTM':'LSTM_stacked':Bidirectional_LSTM':'Simple_ANN'
+def parser_opt():
+    parser = argparse.ArgumentParser(description="Train script")
+    parser.add_argument('-d','--dataset', type=str, required=False, default='ACN_data', help='Select dataset')
+    parser.add_argument('-m','--model_name', type=str, required=True, help='Models available: CNN_LSTM,Simple_RNN,LSTM,LSTM_stacked,Bidirectional_LSTM,Simple_ANN')
+    parser.add_argument('-w','--window_size', type=int, required=True, help='Input sequence length, 96 or 168 values (4-7 days)')
+    parser.add_argument('-e','--epochs', type=int, required=True, help = 'Number of training epochs')
+    parser.add_argument('-b','--batch_size', type=int, required=False, default = 16, help = 'Batch size for training' )
 
-window_size = 24 * 7 # 4 days
+    opt = parser.parse_args()
+    return opt
 
-epochs = 2
-
-if __name__ =='__main__':
-        
+def main(opt):
+    # Input args
+    dataset = opt.dataset 
+    model_name = opt.model_name 
+    window_size = opt.window_size
+    epochs = opt.epochs
+    batch_size = opt.batch_size
+    
     # Load and prepare the dataset
     series,times = load_dataset(dataset)
 
@@ -46,7 +56,6 @@ if __name__ =='__main__':
     plt.figure(figsize=(10, 6))
     plot_series(times, series, start=0, end = 24 * 7)
     plt.title('Data used sample')
-
 
     # Normalize the dataset
     scaler = MinMaxScaler(feature_range=(0.1, 1)) 
@@ -65,7 +74,6 @@ if __name__ =='__main__':
 
     # Create the data generators for training
     num_features = 1
-    batch_size=16
     train_generator = TimeseriesGenerator(x_train_scaled,
                                         x_train_scaled,
                                         length=window_size,
@@ -179,25 +187,6 @@ if __name__ =='__main__':
     plt.savefig(f'Results/train_{model_name}_ws{window_size}_epochs{epochs}_results/pred_test_zoom.png')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
+if __name__ =='__main__':
+    opt = parser_opt()
+    main(opt)
