@@ -169,9 +169,11 @@ def test_forecast(x_test, x_test_scaled, model, scaler, window_size, num_feature
         start = start + future
     
     
-    plt.figure()
+    plt.figure(figsize=(12,6), dpi = 100)
     plt.plot(x_test[start_all + window_size: start_all + window_size + future*num_inferences])
     plt.plot(all_predictions)
+    plt.title('Predictions using 24h horizon')
+    plt.legend(['Ground truth','Predictions'])
     plt.show()
 
     
