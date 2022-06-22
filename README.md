@@ -12,8 +12,8 @@ This repository hosts the files of the project *Deep Learning Applications to Op
 
 ## Content
 The content is arranged in different folders:
-- Root folder: contains basic train and test scripts, also contains a training and testing demo implemented using jupyter notebooks.
-
+- `Root folder`: contains basic [train.py](train.py) script, also contains a [train_demo.ipynb](train_demo.ipynb) and [test_demo.ipynb](test_demo.ipynb) jupyter notebooks to get started into training models and making inferences.
+- `data_preprocessing\`: contains files related to first data processing and visualization. Also contains the datasets in [raw_data](raw_data), [preprocessed_data](preprocessed_data), [processed_data](processed_data) 
 
 ```bash
 ├── data_handler.py
@@ -43,12 +43,17 @@ The content is arranged in different folders:
 └── train.py
 ```
 
+## Get started
+Please refer to installation
+
+## Main outcomes
+- Model benchmarking
+    - Main results for each model in [Results](https://github.com/curroramos/EV_Charging_Load_Prediction/tree/main/Results) directory
+
 ## Results
 ### Prediction benchmarking
 ![alt text](https://github.com/curroramos/EV_Charging_Load_Prediction/blob/main/figures/benchmarking_table.png)
 
-
-### Models comparison
 ![alt text](https://github.com/curroramos/EV_Charging_Load_Prediction/blob/main/figures/Figure%202022-03-22%20200750.png)
 
 ### Real time showcase
