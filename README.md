@@ -51,7 +51,7 @@ Please refer to installation
     - Main results for each model in [Results](https://github.com/curroramos/EV_Charging_Load_Prediction/tree/main/Results) directory
 
 ## Results
-### Prediction benchmarking
+### Prediction benchmark
 ![alt text](https://github.com/curroramos/EV_Charging_Load_Prediction/blob/main/figures/benchmarking_table.png)
 
 ![alt text](https://github.com/curroramos/EV_Charging_Load_Prediction/blob/main/figures/Figure%202022-03-22%20200750.png)
