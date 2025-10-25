@@ -56,5 +56,5 @@ Please refer to installation
 
 ![alt text](https://github.com/curroramos/EV_Charging_Load_Prediction/blob/main/figures/Figure%202022-03-22%20200750.png)
 
-### Real time showcase
+### Real time showcase 
 ![alt text](https://github.com/curroramos/EV_Charging_Load_Prediction/blob/main/Results/real_time.gif)
